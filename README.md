@@ -1,4 +1,4 @@
-Brother Certificate Renewal
+# Brother Certificate Renewal
 
 ```
 usage: brother_update_cert.py [-h] [-p PROTOCOL] url certificate
@@ -13,5 +13,5 @@ optional arguments:
                         Protocol: HTTP or HTTPS. By default it's https
 ```
 
-## Reference
+# Reference
 https://davidlebr1.gitbook.io/a-journey-in-infosec/blog/brother-printer-automatic-certificate-renewal
