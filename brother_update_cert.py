@@ -1,6 +1,6 @@
 '''
 Description: Auto renew certificate for Brother Printer. Tested for MFC-L3750CDW 
-Date: March 23, 2022
+Date: September 17, 2023
 Author: @davidlebr1
 '''
 
@@ -23,10 +23,9 @@ session = HTMLSession()
 def authenticate():
 	# Get CSRF token from login
 	response = session.get("{}://{}/general/status.html".format(protocol, hostname), verify=False)
-	token = response.html.xpath('//*[@id="CSRFToken"]')[0].attrs['value']
 
 	# Authenticate
-	paramsPost = {"B129f":password,"CSRFToken":token,"loginurl":"/general/status.html"}
+	paramsPost = {"B12a1":password,"loginurl":"/general/status.html"}
 	response = session.post("{}://{}/general/status.html".format(protocol, hostname), data=paramsPost, verify=False)
 
 	check_login = response.html.xpath('/html/body/div/div/div[1]/div/div/div[3]/ul/li[3]/ul/li/a')
@@ -99,7 +98,7 @@ def selectCert():
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
-	parser.add_argument("url", help="Hostname or IP. Without http://. ", type=str)
+	parser.add_argument("hostname", help="Hostname or IP. Without http://. ", type=str)
 	parser.add_argument("certificate", help="Full path of the certificate (.pfx file).", type=str)
 	parser.add_argument("password", help="Administrator login password", type=str)
 	parser.add_argument("-p", "--protocol", dest="protocol", help="Protocol: HTTP or HTTPS. By default it's https ", default="https", type=str)
@@ -107,7 +106,7 @@ if __name__ == "__main__":
 	args = parser.parse_args()
 
 	protocol = args.protocol
-	hostname = args.url
+	hostname = args.hostname
 	password = args.password
 	certificate = args.certificate
 
