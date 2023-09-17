@@ -1,10 +1,10 @@
 # Brother Certificate Renewal
 
 ```
-usage: brother_update_cert.py [-h] [-p PROTOCOL] url certificate password
+usage: brother_update_cert.py [-h] [-p PROTOCOL] hostname certificate password
 
 positional arguments:
-  url                   Hostname or IP. Without http://.
+  hostname              Hostname or IP. Without http://.
   certificate           Full path of the certificate (.pfx file).
   password              Administrator login password
 
